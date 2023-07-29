@@ -1,4 +1,4 @@
-# Simple Blockchain AP
+# Simple Blockchain API
 This is a simple blockchain API built using the Flask framework for the backend and a custom `Blockchain` class for handling transactions.
 
 ## Description
