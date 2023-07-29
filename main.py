@@ -9,7 +9,7 @@ def main():
     app = Flask(__name__)
 
     # routing
-    @app.route('/blockchains',methods=["GET"])
+    @app.route('/blockchain',methods=["GET"])
     def blockchains():
         response = {
             "chain":blockchain.chain,
@@ -33,11 +33,21 @@ def main():
             "index": block["index"],
             "timestamp": block["timestamp"],
             "nonce": block["nonce"],
-            "previouse_hash": block["previous_hash"]
+            "previous_hash": block["previous_hash"]
         }
 
         return jsonify(response), 200
 
+
+    @app.route('/is_chains_valid', methods=["GET"])
+    def is_chains_valid():
+        is_valid = blockchain.is_chain_valid(blockchain.chain)
+        if is_valid:
+            response = {"message": "Blockchain is valid"}
+        else:
+            response = {"message": "Problem, Blockchain invalid"}
+        return jsonify(response), 200
+        
     app.run()
 
 
